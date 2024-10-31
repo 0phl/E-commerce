@@ -1,5 +1,6 @@
-<?php require_once("includes/header.php")?>
-
+<?php 
+    session_start();
+    require_once("includes/header.php")?>
     <!-- Navbar -->
     <?php require_once("includes/navbar.php")?>
 
@@ -80,10 +81,10 @@
         </div>
     </div>
     
-   
 
     <!-- Bootstrap 5 JS Bundle -->
     <!-- Footer -->
     <?php require_once("includes/footer.php")?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

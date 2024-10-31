@@ -10,8 +10,9 @@ if (isset($_SESSION["success"])) {
     $messSucc = $_SESSION["success"]; // Changed from $_messSucc to $messSucc
     unset($_SESSION["success"]);
 }
-?>
 
+?>
+<?php require_once("includes/navbar.php") ?>
 
     <!-- Registration Form -->
     <div class="container content mt-5">
@@ -70,5 +71,6 @@ if (isset($_SESSION["success"])) {
     <!-- Bootstrap 5 JS Bundle -->
     <!-- Footer -->
     <?php require_once("includes/footer.php")?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

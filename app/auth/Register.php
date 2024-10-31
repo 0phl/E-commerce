@@ -36,13 +36,12 @@ session_start();
                 $password = password_hash(trim($password), PASSWORD_BCRYPT);
 
                 if($stmt->execute()){
-                    header("location: /registration.php");
                     $_SESSION["success"] = "Registration successful";
-                    exit;
-
-                } else { 
                     header("location: /registration.php");
+                    exit;
+                } else { 
                     $_SESSION["error"] = "Insert error";
+                    header("location: /registration.php");
                     exit;
                 }
 
