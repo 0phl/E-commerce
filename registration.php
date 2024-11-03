@@ -2,12 +2,13 @@
 session_start();
 require_once("includes/header.php");
 
-if (isset($_SESSION["error"])) {
-    $messErr = $_SESSION["error"];
+if(isset($_SESSION["error"])){
+    $messageErr = $_SESSION["error"];
     unset($_SESSION["error"]);
 }
-if (isset($_SESSION["success"])) {
-    $messSucc = $_SESSION["success"]; // Changed from $_messSucc to $messSucc
+
+if(isset($_SESSION["success"])){
+    $messageSucc = $_SESSION["success"];
     unset($_SESSION["success"]);
 }
 
@@ -24,19 +25,20 @@ if (isset($_SESSION["success"])) {
                     </div>
                     <div class="card-body">
 
-                    <?php if(isset($_messSucc)){ ?>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong><?php echo $messSucc["success"]; ?></strong> 
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    <?php } ?>
+                        <!-- message response -->
+                        <?php if(isset($messageSucc)){ ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong><?php echo $messageSucc; ?></strong> 
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php } ?>    
 
-                    <?php if(isset($messErr)){ ?>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong><?php echo $messErr?></strong> 
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    <?php } ?>
+                        <?php if(isset($messageErr)){ ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong><?php echo $messageErr; ?></strong> 
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php } ?>    
 
                         <form action="app\auth\Register.php" method="POST">
                             <div class="mb-3">

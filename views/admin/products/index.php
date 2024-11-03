@@ -3,14 +3,16 @@ session_start();
 require_once($_SERVER["DOCUMENT_ROOT"]."/app/config/Directories.php");
 require_once(ROOT_DIR."includes/header.php");
 
-if (isset($_SESSION["error"])) {
-    $messErr = $_SESSION["error"];
+if(isset($_SESSION["error"])){
+    $messageErr = $_SESSION["error"];
     unset($_SESSION["error"]);
 }
-if (isset($_SESSION["success"])) {
-    $messSucc = $_SESSION["success"]; // Changed from $_messSucc to $messSucc
+
+if(isset($_SESSION["success"])){
+    $messageSucc = $_SESSION["success"];
     unset($_SESSION["success"]);
 }
+
 
 include(ROOT_DIR."app/product/get_products.php");
 ?>
@@ -30,25 +32,26 @@ include(ROOT_DIR."app/product/get_products.php");
 
             <!-- Add New Product Button -->
             <a href="<?php echo BASE_URL; ?>views/admin/product/add.php" class="btn btn-success">Add New Product</a>
+
         </div>
+                        <!-- message response -->
+                        <?php if(isset($messageSucc)){ ?>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong><?php echo $messageSucc; ?></strong> 
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php } ?>    
+
+                        <?php if(isset($messageErr)){ ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong><?php echo $messageErr; ?></strong> 
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <?php } ?>    
+
         <p class="text-center">Manage all products in the catalog</p>
         <hr>
     </div>
-            <!-- Message response -->
-    <?php if(isset($_messSucc)){ ?>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong><?php echo $messSucc["success"]; ?></strong> 
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    <?php } ?>
-
-                    <?php if(isset($messErr)){ ?>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong><?php echo $messErr?></strong> 
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    <?php } ?>
-
     <!-- Product Cards Container -->
     <div class="container content mt-3">
         <div class="row">
