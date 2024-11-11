@@ -31,7 +31,7 @@ include(ROOT_DIR."app/product/get_products.php");
             <h2>Product List</h2>
 
             <!-- Add New Product Button -->
-            <a href="<?php echo BASE_URL; ?>views/admin/product/add.php" class="btn btn-success">Add New Product</a>
+            <a href="<?php echo BASE_URL; ?>views/admin/products/add.php" class="btn btn-success">Add New Product</a>
 
         </div>
                         <!-- message response -->
