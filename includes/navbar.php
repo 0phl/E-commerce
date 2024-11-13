@@ -4,7 +4,7 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/app/config/directories.php';
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.php">MyShop</a>
+        <a class="navbar-brand" href="<?php echo BASE_URL; ?>index.php">MyShop</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -41,10 +41,10 @@ require_once $_SERVER["DOCUMENT_ROOT"] . '/app/config/directories.php';
                         <?php echo $_SESSION["fullname"]; ?>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                        <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
-                        <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+                        <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>dashboard.php">Dashboard</a></li>
+                        <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>profile.php">Profile</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                        <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>logout.php">Logout</a></li>
                     </ul>
                 </li>
                 <?php } ?>
