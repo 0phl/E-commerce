@@ -10,7 +10,6 @@
     //this variable will hold product data from db
     $product = [];
     $id = @$_GET['id'];
-
     try {
         
         $sql  = "SELECT * FROM products WHERE products.id = $id"; //select statement here
