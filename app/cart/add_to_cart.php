@@ -48,7 +48,45 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     //insert record to database
     try {
         $conn = $db->connectDB();
-$_SESSION["success"] = "Added to cart successfully!";
+        $sql = "SELECT * FROM products WHERE products.id = :p_product_id";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(":p_product_id", $productId);
+        if ($stmt->execute()) {
+            
+        }
+        $product = $stmt->fetch(); //return only 1 record
+
+
+            $computedPrice = $product["unit_price"] * $quantity;
+            $sql = "INSERT INTO carts SET 
+            user_id = :p_user_id, 
+            product_id = :p_product_id, 
+            quantity = :p_quantity, 
+            unit_price = :p_unit_price, 
+            total_price = :p_total_price, 
+            created_at = Now(), 
+            updated_at = Now()";
+
+        $stmt = $conn->prepare($sql);
+
+        $data = [':p_user_id'        => $userId,
+            ':p_product_id'          => $productId,
+            ':p_quantity'            => $quantity,
+            ':p_unit_price'          => $product["unit_price"],
+            ':p_total_price'         => $computedPrice ];
+
+        if (!$stmt->execute($data)){
+            $_SESSION["error"] = "Failed to add to cart";
+            
+            header("location: ".BASE_URL."views/product/product.php?id=".$productId);
+            exit;
+        }
+
+        
+
+
+
+        $_SESSION["success"] = "Added to cart successfully!";
         header("location: ".BASE_URL."views/product/product.php?id=".$productId);
         exit;
 
