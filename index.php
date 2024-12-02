@@ -1,13 +1,17 @@
 <!-- Header -->
 <?php 
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    
     session_start();
-    require_once(__DIR__."/app/config/Directories.php");
-    include(ROOT_DIR."app/product/get_products.php");
-    require_once(ROOT_DIR."includes\header.php");
+    require_once(__DIR__ . "/app/config/Directories.php");
+    include(__DIR__ . "/app/product/get_products.php");
+    require_once(__DIR__ . "/includes/header.php");
     ?>
 
+
     <!-- Navbar -->
-    <?php require_once("includes/navbar.php") ?>
+    <?php require_once(__DIR__ . "/includes/navbar.php") ?>
 
 
     <!-- Hero Section -->
@@ -59,11 +63,11 @@
         <div class="row gy-5">
             <?php
             foreach($productList as $product){
-                include(ROOT_DIR.'views/components/product-cart.php');
+                include(__DIR__ . "/views/components/product-cart.php");
             }
             ?>
         </div>
     </div>
 
     <!-- Footer -->
-    <?php require_once(ROOT_DIR."includes/footer.php") ?>
+    <?php require_once(__DIR__ . "/includes/footer.php") ?>

@@ -17,13 +17,12 @@ session_start();
             
             // connect database
             $host = "localhost";
-            $database = "ecommerce";
-            $dbusername = "root";
-            $dbpassword = "";
-    // insert record
-    // validate confirmpassword
+            $database = "ecommerce_rdelacruz";
+            $dbusername = "rdelacruz";
+            $dbpassword = "R53lAcruz_2024";
+            $charset = 'utf8mb4';
 
-            $dsn = "mysql: host=$host;dbname=$database;";
+            $dsn = "mysql: host=$host;dbname=$database;charset=$charset;";
             try {
                 $conn = new PDO($dsn, $dbusername, $dbpassword);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

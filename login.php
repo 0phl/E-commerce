@@ -37,7 +37,7 @@
                             </div>
                         <?php   } ?>
 
-                        <form action="app\auth\Login.php" method="POST">
+                        <form action="app/auth/Login.php" method="POST">
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
                                 <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>

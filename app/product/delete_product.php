@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once(__DIR__."/../config/Directories.php"); //to handle folder specific path
-include("..\config\DatabaseConnect.php"); //to access database connection
+include(__DIR__ . "/../config/DatabaseConnect.php"); //to access database connection
 
 $db = new DatabaseConnect();
 $conn = $db->connectDB();

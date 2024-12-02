@@ -40,7 +40,7 @@ if(isset($_SESSION["success"])){
                         </div>
                         <?php } ?>    
 
-                        <form action="app\auth\Register.php" method="POST">
+                        <form action="app/auth/Register.php" method="POST">
                             <div class="mb-3">
                                 <label for="fullName" class="form-label">Full Name</label>
                                 <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Enter your full name" required>

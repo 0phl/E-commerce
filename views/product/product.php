@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_log("Session data: " . print_r($_SESSION, true));
 require_once($_SERVER["DOCUMENT_ROOT"]."/app/config/Directories.php");
 
 include(ROOT_DIR."app/config/DatabaseConnect.php");
@@ -36,7 +37,7 @@ if(isset($_SESSION["success"])){
 
 ?>
     <!-- Navbar -->
-    <?php require_once(ROOT_DIR."includes\\navbar.php"); ?>
+    <?php require_once(ROOT_DIR."includes//navbar.php"); ?>
 
     <!-- message response -->
         <?php if(isset($messageSucc)){ ?>

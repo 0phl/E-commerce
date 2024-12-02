@@ -2,23 +2,30 @@
 session_start();
 require_once($_SERVER["DOCUMENT_ROOT"]."/app/config/Directories.php");
 
+if (!isset($_SESSION["user_id"])) {
+    $_SESSION["error"] = "Please login to view your cart";
+    header("Location: login.php");
+    exit();
+}
+
 include(ROOT_DIR."app/config/DatabaseConnect.php");
 $db = new DatabaseConnect();
 $conn = $db ->connectDB();
 
 $carts = [];
 $id = @$_GET['id'];
-$userId   = $_SESSION["user_id"];
+$userId = $_SESSION["user_id"];
 $subtotal = 0;
 $purchase_total = 0;
 try {
-    $sql = "SELECT carts.id, products.product_name, carts.quantity, carts.unit_price, carts.total_price"
-            ." FROM carts "
-            ." LEFT JOIN products ON products.id = carts.product_id"
-            ." WHERE carts.user_id = $userId ";
-    $stmt = $conn ->prepare($sql);
-    $stmt -> execute();
-    $carts = $stmt -> fetchAll();
+        $sql = "SELECT carts.id, products.product_name, carts.quantity, carts.unit_price, carts.total_price
+        FROM carts 
+        LEFT JOIN products ON products.id = carts.product_id
+        WHERE carts.user_id = :userId";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        $carts = $stmt->fetchAll();
     
 } catch (PDOException $e){
    echo "Connection Failed: " . $e->getMessage();
@@ -42,7 +49,7 @@ if(isset($_SESSION["success"])){
 ?>
 
     <!-- Navbar -->
-    <?php require_once("includes\\navbar.php"); ?>
+    <?php require_once("includes//navbar.php"); ?>
 
     <!-- Shopping Cart -->
     <div class="container mt-5">

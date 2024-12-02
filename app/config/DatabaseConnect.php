@@ -1,13 +1,24 @@
 <?php 
-
+// for production
 
 class DatabaseConnect {
     private $host = "localhost";
-    private $database = "ecommerce";
-    private $dbusername = "root";
-    private $dbpassword = "";
+    private $database = "ecommerce_rdelacruz";
+    private $dbusername = "rdelacruz";
+    private $dbpassword = "R53lAcruz_2024";
     private $charset    = 'utf8mb4';
     private $conn = null;
+
+    //** LOCALHOST */
+    
+    //     class DatabaseConnect {
+    //     private $host = "localhost";
+    //     private $database = "ecommercez";
+    //     private $dbusername = "root";
+    //     private $dbpassword = "";
+    //     private $charset    = 'utf8mb4';
+    //     private $conn = null;
+    
 
 
     public function connectDB(){
