@@ -17,9 +17,9 @@ session_start();
             
             // connect database
             $host = "localhost";
-            $database = "ecommerce_rdelacruz";
-            $dbusername = "rdelacruz";
-            $dbpassword = "R53lAcruz_2024";
+            $database = "ecommerce";
+            $dbusername = "root";
+            $dbpassword = "";
             $charset = 'utf8mb4';
 
             $dsn = "mysql: host=$host;dbname=$database;charset=$charset;";
